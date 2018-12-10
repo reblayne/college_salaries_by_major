@@ -1,0 +1,2375 @@
+<!doctype html>
+<!-- Rebecca Layne & Sidra Ijaz -->
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="Rebecca Layne & Sidra Ijaz">
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>A4 - Colleges that are Worth It</title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <style>
+  .tooltip {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    color: black;
+    border-radius: 10px;
+    pointer-events: none;
+    background-color: white;
+    font-size: 12px;
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    line-height: normal;
+    border: 1px solid black;
+
+
+  }
+  a{
+    padding: 10px
+  }
+  h8{
+
+        font-weight: normal;
+        font-size: 16px;
+        font-family: Arial;
+        color: gray;
+        text-align: center;
+  }
+
+  .tooltip2 {
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    color:black;
+    border-radius: 10px;
+    pointer-events: none;
+    font-size: 12px;
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+    min-width: 80px;
+    background: none repeat scroll 0 0 white;
+    border: 1px solid black;
+    line-height: normal;
+
+  }
+
+  b{
+    color:black;
+    font-weight: bold;
+  }
+
+  .boxTypes button{
+    display: block;
+    width: 100px;
+    text-align: center;
+  }
+  /* .searchBar {
+  width: 400px;
+  min-height: 50px;
+  background-color: #F6F7F9;
+  border: none
+  color: #253C6C;
+
+  } */
+
+  #area7{
+    float: left;
+    margin-left: 10px;
+  }
+  .searchBar button {
+    float: right;
+    display: inline
+    margin: 10px
+
+  }
+
+  .searchBar {
+    height: 40px;
+    background-color: transparent;
+    color: white;
+    padding: 0 15px;
+    border: none;
+    text-align: center;
+    font-size: 1em;
+    margin: 10px;
+    display: inline;
+  }
+
+  .searchBar:focus {
+    border: none;
+    outline: none;
+  }
+
+  .results {
+    display: none;
+    font-color: black;
+    /* width: 100%; */
+    margin-top: -2px;
+    color: #263d6d;
+    max-height: 190px;
+    overflow-x: hidden;
+    overflow: -moz-scrollbars-vertical; }
+
+    .results ul {
+      padding: 0;
+      font-color: black;
+
+      background-color:transparent;
+    }
+
+    .results ul li {
+      /* width: 100%; */
+      padding: 10px 15px;
+      list-style: none;
+      font-size: 1em;
+      font-style: normal;
+      text-transform: capitalize !important;
+      font-color: black;
+
+    }
+
+    .results ul li h4 {
+      text-transform: capitalize;
+      color: #f95c58;
+      font-color: black;
+
+    }
+
+    .results ul li p {
+      text-transform: capitalize;
+      font-color: black;
+
+      /* font-weight: 300; */
+    }
+
+    .results ul li a {
+      margin: 0;
+      padding: 0;
+      text-transform: capitalize !important;
+      font-color: black;
+
+    }
+
+    .results ul li:hover {
+      cursor: pointer;
+      font-color: black;
+
+    }
+
+    .results::-webkit-scrollbar {
+      width: 0.8em;
+      background-color: #D3D8E1;
+    }
+
+    .results::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .results::-webkit-scrollbar-thumb {
+      background-color: #263d6d;
+      outline: 1px solid transparent;
+    }
+
+    .autocompleteResults {
+      margin-top: 12px;
+      font-color: black;
+
+    }
+
+    .autocompleteResults li {
+      /* width: 100%; */
+      padding: 30px 15px;
+      list-style: none;
+      font-size: 1em;
+      font-style: normal;
+      font-family: "Open Sans";
+      text-transform: capitalize !important;
+      font-color: black;
+
+    }
+
+    .autocompleteResults li h4 {
+      text-transform: capitalize;
+      color: #f95c58;
+      font-color: black;
+
+    }
+
+    .autocompleteResults li p {
+      text-transform: capitalize;
+      font-weight: 300;
+      font-color: black;
+
+    }
+
+    .autocompleteResults li a {
+      margin: 0;
+      padding: 0;
+      text-transform: capitalize !important;
+      font-color: black;
+
+    }
+
+    .autocompleteResults li a:hover {
+      font-color: black;
+
+    }
+    ::-webkit-input-placeholder {
+      font-weight: bold;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+      font-weight: bold;
+
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+      font-weight: bold;
+
+    }
+
+    :-ms-input-placeholder {
+      font-weight: bold;
+
+    }
+    <!doct
+    #searchBarStates, #searchBarStates{
+      text-align: center;
+    }
+
+    #searchButtons
+    {
+      /* width:100%; */
+      text-align: center;
+      /* flex-direction:row; */
+
+      display:inline-block;
+      margin: 5px;
+
+      /* flex-direction: row; */
+    }
+    .sliderLabel{
+      display: inline-block;
+      float: right;
+      text-align: center;
+      width: 200px;
+
+    }
+
+    #typeButtons{
+      text-align: center;
+       width: 325px;
+      display:inline-block;
+      margin: 5px;
+    }
+
+    #sliderBox{
+      display: inline-block;
+      flex:column;
+      /* margin-right: 0px; */
+      float: right;
+      width: 200px;
+      text-align: right;
+    }
+
+
+    #box2{
+      display: inline;
+    }
+
+    .searchingBorder{
+      width:300px;
+      margin: 5px;
+      /* display: flex; */
+      margin: 10px;
+      /* display: inline-block;
+      float:right; */
+    }
+    #barSide{
+      float:right;
+      margin-right:10px
+      text-align:center;
+    }
+
+    #searchingBorderSchools{
+      display:inline-block
+    }
+
+    #searchingBorderStates{
+      display:inline-block;
+    }
+
+    #acceptance, #undergrads{
+      float:right;
+      margin:10px;
+      text-align: center;
+
+    }
+
+
+    #y{
+      text-align: center;
+    }
+    #btype{
+      font-weight: bold;
+      margin-top: 5px;
+      text-align: center;
+      width: auto;
+
+    }
+
+    /* #undergrad{
+    text-align: right;
+    } */
+
+
+    </style>
+  </head>
+
+  <body>
+    <!-- Banner -->
+    <section id="banner">
+      <div class="content">
+        <header>
+          <h2>Colleges That Are Worth It</h2>
+          <p>Evaluating Colleges Based on Post-Graduate Salary</p>
+          <p>Created By: Rebecca Layne and Sidra Ijaz</p>
+
+        </header>
+        <!-- image from  https://commons.wikimedia.org/wiki/File:Emojione_1F393.svg -->
+        <span class="image"><img src="images/cap.png" alt="" /></span>
+        <br/>
+        <br/>
+        <p>To a college applicant, what is most important in selecting a college? There are a variety of factors to consider: prestige, size, location, cost, social life, etc. But, what about <i>post-graduation salary?</i> <span style = "font-weight:bold"> Post-graduation salaries is a factor that is often overlooked in the college application process.</span> </p>
+        <p>Post-graduation salary is arguably one of the most important factors to consider during the college application process and we believe that it deserves more attention. One of the main reasons to attend college is to ultimately secure a well-paying job after graduation. With this goal in mind, there is a need to incorporate salary into the way we value schools. </p>
+
+        <p>This article aims to re-evaluate colleges through the lens of early career salary. Early career salary is a metric collected from PayScale’s College Salary Report that describes colleges’ median salary for alumni with 0-5 years of experience.</p>
+      </div>
+      <a href="#one" class="goto-next scrolly">Next</a>
+    </section>
+
+    <section id="one"class="col-md-5" >
+      <div class="content">
+        <div class="container">
+          <div class="row">
+
+            <header style = "margin-left: 17%">
+              <br/>
+              <br/>
+              <h2>The College Decision</h2>
+              <br/>
+              <p>How do the factors that we typically value when applying to college compare to early career salary?</p>
+            </header>
+
+            <div >
+              <p  id="two">Choosing a college is a big decision. How do we make this choice? While there are many important aspects to finding the best fit, let’s explore the degree to which some of these aspects relate to early career salary. We will gage whether or not acceptance rate, public or private, location, and size are good metrics for predicting early career salary.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section>
+    <!-- <span class="image fit main" id = "x"></span> -->
+
+    <!-- <h5>Do prestigious schools pay off? <h5/> -->
+
+    <div class="col-md-5" id="area1"></div>
+    <a id="three"></a>
+
+    <p >There is some correlation between acceptance rate and early career salary. For colleges with an acceptance rate below 50%, generally, the more prestigious the school, the higher the salary. However, for colleges with an acceptance rate above 50%, there is not much correlation. This means it is not always best to choose the school with the lowest acceptance rate. In many cases, schools with a higher acceptance rate have a higher starting salary.</p>
+    <br/><br/>
+  </p>
+</section>
+
+<section>
+</br>
+
+  <div class="col-md-5" id="area2"></div>
+</br>
+</br>
+
+  <p  id = "four"> Although many think of private schools as superior to public schools, the average early career salary for public schools and private schools are very similar. During the
+    college selection process, choosing a public vs. private does not make much of a difference in terms of salary.
+  </p>
+</p>
+
+<div class="col-md-5" id="area3"></div>
+<p>Size does not say much about early career salary. There is a bit of a sideways bell shape: huge schools generally have an average early career salary. Other than that, size is not a good predictor or salary. Therefore, if we prioritize salary, size does not matter much.</p>
+<p>
+  Salary is not adequately captured by any of the variables we have mentioned this far. Thus, it is useful to consider salary as a separate and important metric when evaluating colleges. <p/>
+
+  <h2 id ="five"><br/><br/>Which Colleges Are Really Worth It?</h2>
+  <h4>Incorporating early career salary and cost of attendance in evaluating colleges</h4>
+
+  <p><br/><br/>We’ve established that early career salary is a factor that deserves separate attention in the college selection process. Now, in order to better distinguish the monetary value of different colleges, it is useful to also consider the cost of attendance. Cost of Attendance is a metric collected from the U.S Department of Education that describes colleges’ average total cost, which includes tuition, room/board, books, etc.</p>
+  <p>The visual in this section plots average cost of attendance against early career salary to determine which schools are most valuable. The scatterplot divides colleges into 4 quadrants based on where their cost of attendance and early career salary fall in comparison to the means. Ideally, we’d like to attend a college with a low cost of attendance and a high early career salary. Schools with better monetary value are easily identified in the darker gray sections.
+   The size of the points correspond to the size of the colleges' undergraduate student body.</p>
+
+
+  <!-- We’ve established that early career salary is a factor that deserves separate attention in the college selection process. Now, in order to better distinguish the monetary value of different colleges, it is useful to also consider the cost of attendance. The visual in this section plots average cost of attendance against early career salary to determine which schools are most valuable.
+  <br/><br/>
+  Ideally, we’d like to attend a college with a low cost of attendance and a high early career salary. The plot separates schools into four categories based on whether their cost is above or below average and salary is above or below average. It allows you to learn which schools are the most “worth it.” Aim for schools in the green range over schools in the red range to maximize your value.
+  <p/> -->
+</section>
+
+  <div class="col-md-5" id="area5"></div>
+
+  <h2 id="six"><br/>Which Majors Are Really Worth It?</h2>
+  <h4>Exploring early career salaries of different major categories</h4>
+  <p><br/><br/>We’ve seen the early career salary of various colleges across the US. However, postgraduate salaries vary tremendously for students of different majors. While choosing college is an important decision, choosing a major is also a very important decision. In order to prioritize post-graduation salary, we must understand which majors are most valuable, according to early career pay.</p>
+  <!-- We’ve seen the early career salary of various colleges across the US. However, postgraduate salaries vary tremendously for students of different majors. While choosing college is an important decision, choosing a major is also a very important decision. Again, with the goal of finding a well-paying job after college, we must understand which majors are most valuable, according to early career pay.
+  <br/><br/>
+  Engineering and computer science students make significantly more money than any other major. Arts and humanities majors make significantly less than any other major. -->
+</p>
+
+<p>Engineering and computer science students make significantly more money than any other major. Arts and humanities majors make significantly less than any other major.</p>
+<p>Since there is large variation in early career salary across majors, it is useful to separate colleges by major category. This helps to reduce bias cause by inflation or deflation of early career salary due to popularity of majors at a college.</p>
+<div class="col-md-5" id="area6"></div>
+
+
+<h2> Early Career Salary Across Different Measures </h2>
+<p id="seven"><br/><br/> The following tool allows you to explore which schools
+and majors are most valuable. Again, aiming for schools in the darker gray range
+will maximize monetary value. As you explore the different major buttons, notice
+how the engineering and computer science majors are generally valued higher
+(fall in the darker gray range), while arts and humanities majors are generally valued
+lower (fall in the lighter gray range).</p> <!-- The following tool allows you to explore
+which schools are most valuable based on major. You can also filter by
+acceptance rate, location, and size to find schools that meet your other
+preferences. You can search for specific schools to see how valuable they are.
+<br/><br/> If you click on engineering or computer science for majors, you see
+that majority of the points fall in the green range, demonstrating their value,
+while arts and humanities points fall in the red range, demonstrating their
+limited value. <br/><br/> As you explore the different major buttons, notice how
+the engineering and computer science majors are generally above average (valued
+higher), while arts and humanities majors are generally below average (valued
+lower). -->
+<h3 style = "font-style: normal">Try Out Our Visualization</h3>
+</p> </p><p><span style = "text-decoration: underline">Filter by
+Majors:</span> <i>Filter early career salaries by their major categories or see the averaged early career salary across all majors.</i>
+Simply click one of the colored buttons to filter and click “Averaged” to
+return back to the overall view.</p>
+
+<p><span style = "text-decoration:
+underline">Filter by College Type:</span> <i> Filter schools by if they are
+public, or private schools.</i>Click one of the buttons to filter, and click
+“All” to return to the view showing all colleges/universities.</p>
+
+<p><span style = "text-decoration: underline">Search for a School:</span><i> Find
+a college/university you’re interested in viewing in comparison to the other
+schools.</i> Simply start typing the full name in the “Search for Schools” bar. A
+list of colleges and universities will popup below that match your criteria.
+Click on one and click “Search”. Your desired school will highlight in yellow and be at an enlarged size for your convenience. Hover over the point to learn more! Click clear to remove the highlight of the
+school.</p>
+
+<p><span style = "text-decoration: underline">Filter by State: </span><i> Filter
+schools by which states that it's located in.</i> Simply, start typing the full
+name in the “Filter by States” bar. A list of the U.S. states will popup below
+that match your criteria. Click on one and then click “Select State”. You can
+continue to add more states by repeating the process. Click “Clear” to remove
+the states filter.</p>
+
+<p><span style = "text-decoration: underline">Filter by Acceptance Rate: </span>
+<i>Filter schools by upper bound on their acceptance rate. </i> Drag the slider back and
+forth to filter out schools not contained in the upper bound of the selected acceptance
+rate based on the slider’s tick marks. Drag it all the way to the right to
+include all schools.</p>
+
+<p><span style = "text-decoration: underline">Filter by Number of Undergrads:
+</span>  <i>Filter schools based on their undergraduate population.</i> Drag the
+slider back and forth to filter out schools not contained in the upper bound of
+the selected number of undergraduates based on the slider’s tick marks. Drag it all the
+way to the right to include all schools.</p>
+
+
+<!--
+<p>Furthermore, this tool provides additional flexibility by allowing you to
+search for specific colleges and filter schools by major category, acceptance
+rate, size, and location to meet other preferences. Specify your preferences to
+learn which schools on your list are most valuable!</p> <br/> -->
+<section id = "box">
+  <span id = "type"> Major: </span>
+  <button id="computerscience" data-filter="Computer Science" > Computer Science</button>
+  <button id="humanities" data-filter="Humanities" > Humanities</button>
+  <button id="physicallifesciences" data-filter="Physical & Life Sciences" > Physical & Life Sciences</button>
+  <button id="engineering" data-filter="Engineering" > Engineering</button>
+  <button id="business" data-filter="Business" > Business</button>
+  <button id="socialsciences" data-filter="Social Sciences"> Social Sciences</button>
+  <button id="arts" data-filter="Arts"> Arts</button>
+  <button id="Average" data-filter="Average"> Averaged</button>
+  <section class = "boxTypes">
+
+  </section>
+</section>
+<div class="col-md-5" id="area7">
+  <div id = "barSide" style ="width:25%">
+    <div style = "margin-top: 10px; margin-left: 40px">
+      <div style = "text-align: center" class = "btype"> College Type: </div>
+      <div style id = "typeButtons" style = "margin-left:20px">
+      <button style = "margin-left:10px;"id="public" data-filter="Public"> Public</button>
+      <button id="private" data-filter="Private"> Private</button>
+      <button id="all" data-filter="All"> All</button>
+    </div>
+    </div>
+    <div class="searchNButton" id = "searchBarSchools">
+      <div class = "searchingBorder" id = "searchingBorderSchools">
+        <input class="searchBar" style = "width: 375px"id = "searchInputSchools" type="text" value="" autofocus="true" name="search" placeholder="Search for Schools">   </input>
+        <button style = "margin-left:27%;" class = "sButtons"onclick = clearSchoolHighlight() data-filter="clearSchools"> Clear </button>
+        <button class = "sButtons" id ="searchSchool" onclick = changeSelectedSchool() data-filter="searchSchool"> Search </button>
+        <div class="results" id = "resultsSchools">
+          <ul class="autocompleteResults" id = "autocompleteSchools">
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="searchNButton" id = "searchBarStates">
+      <div class = "searchingBorder" id ="searchingBorderStates">
+        <input class="searchBar"id = "searchInputStates" style = "width: 375px" type="text" value="" autofocus="true" name="search2" placeholder="Filter by State"></input>
+
+        <span class = "searchButtons" style = "margin-left:25%;">
+          <button  class = "sButtons"onclick = clearStatesFilter() data-filter="clearStates"> Clear </button>
+          <!-- <button class = "sButtons"id ="searchState" onclick = changeStates() data-filter="searchStates"> Filter </button> -->
+          <button class = "sButtons" id ="addState" onclick = addStates() data-filter="addStates"> Select State </button>
+        </span>
+
+        <div class="results" id = "resultsStates">
+          <ul class="autocompleteResults" id = "autocompleteStates">
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <div id = "sliderBox">
+        <br/>
+        <h8 class = "sliderLabel"  class = "btype" id = "acceptance" for="acceptance_rate_slidername "style = "width:300px" >Acceptance Rate (Upper Bound)</h8>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+
+        <h8 class = "sliderLabel" class = "btype" id = "undergrads" for="undergrads_slidername" style = "width:300px;text-align:right" >Number of Undergrads (Upper Bound) <h8>
+      </div>
+    </div>
+    <section id = "box2" >
+
+    </div>
+
+
+    <script src="https://d3js.org/d3-array.v1.min.js"></script>
+    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
+
+  <div>
+    <div>
+  <div>
+  </br>
+</br>
+</br>
+   <p style = "margin-top: 20px">Through our data exploration and creation of our visualization
+  tools, we noticed some key findings that we wanted to showcase through our
+  website. We hope that the final visual will be a tool that is useful for anyone
+  who is involved in the college and major decision-making processes. This visual
+  highlights the early career salary and cost of attendance of colleges. This tool
+  should help users better understand the different monetary value of schools and
+  encourage students/other users to consider these monetary factors as important
+  as they choose schools and majors. As users filter out schools to meet their
+  preferences, all schools on the plot are viewed through the lens of monetary
+  value.</p> <p> One of the major findings that this interactive tool demonstrates
+  is that choosing a major is a decision that is just as important as choosing a
+  college in terms of monetary value. This is evident from exploring the different
+  major category buttons; as you press the different buttons, the college points
+  tend to shift in the same direction depending on the major. In particular,
+  studying engineering or computer science tends to be a valuable decision,
+  regardless of what college you attend almost all of
+  the colleges for computer science early career salary fall in the darker gray range,
+  and are, thus, more highly valued. Similarly, studying arts or humanities tends
+  to be a significantly less valuable decision, regardless of what college you
+  attend, almost all of the colleges for arts early
+  career salary fall in the ligther gray range, and are, thus, valued lower.</p>
+
+  <p>While generally, it is thought the higher the prestige of a
+  college/university, the higher the early career salary it is not the most significant factor. College major
+  plays a significantly higher role in early career salary than do other metrics
+  such as prestige/acceptance rate, type of school, location, etc. </p> <p>This
+  website also helps address misconceptions many people have. For example, many
+  believe that private universities lead to a much higher early career salary,
+  that is not the case. We found that the average early career salary is almost
+  the same (approximately only a $1,000 difference).</p> <p>Our visualizations
+  also depict the fact that number of undergrads at a college/university does not
+  have a strong correlation with early career salary. The scatterplot showed
+  sideways bell shape meaning that much larger schools generally have an average
+  early career salary. Other than that, size is not a good predictor or
+  salary.</p> <p>We hope that these visualizations will help users closely examine
+  the relationships between the characteristics of a college/university and
+  monetary value. This website’s aim is to highlight salary in the context of
+  majors when considering colleges and universities in the application
+  process.</p>
+  </div>
+
+
+
+
+
+    <!-- Header -->
+    <header id="header">
+      <h1 id="logo" style = "font-size: 30px" ><a href="index.html">Colleges That Are Worth It</a></h1>
+      <nav id="nav">
+        <ul>
+          <li><a1 href="Salaries_By_Colleges.html#">Home</a1></li>
+          <li><a1 href="#two">Prestige</a1></li>
+          <li><a1 href="#three">Private vs. Public</a1></li>
+          <li><a1 href="#four">Undergrad Population</a1></li>
+          <li><a1 href="#five">College Worth</a1></li>
+          <li><a1 href="#six">Majors</a1></li>
+          <li><a1 href="#seven">Across Different Measures</a1></li>
+
+
+
+
+          <ul>
+            <!-- <li><a href="left-sidebar.html">Left Sidebar</a></li>
+            <li><a href="right-sidebar.html">Right Sidebar</a></li>
+            <li><a href="no-sidebar.html">No Sidebar</a></li> -->
+            <!-- <li>
+            <a href="#">Submenu</a>
+            <ul>
+            <li><a href="#">Option 1</a></li>
+            <li><a href="#">Option 2</a></li>
+            <li><a href="#">Option 3</a></li>
+            <li><a href="#">Option 4</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li> -->
+    <!-- <li><a href="elements.html">Elements</a></li>
+    <li><a href="#" class="button primary">Sign Up</a></li> -->
+  </ul>
+</nav>
+</header>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script>
+var college_data = []; //global variable to store collee data
+var currFilteredData = []; //keeps track of current filtered data
+var currButton = "Average"; // current button pressed
+var currType = "All"; // current button pressed
+var acceptance_rate_upper = 1; //upper limit on acceptance rate
+var undergrads_upper = 55000; //upper limit on undergrads
+var selectedSchoolName = "";
+var schoolsArray = [];
+var selectedStates = [];
+var lastX = 0;
+var lastY = 0;
+var lastD;
+var allStates = ['ALABAMA','ALASKA','ARIZONA','ARKANSAS','CALIFORNIA',
+'COLORADO','CONNECTICUT','DELAWARE','DISTRICT OF COLUMBIA','FLORIDA',
+'GEORGIA','HAWAII','IDAHO','ILLINOIS','INDIANA','IOWA','KANSAS','KENTUCKY',
+'LOUISIANA','MAINE','MARYLAND','MASSACHUSETTS','MICHIGAN','MINNESOTA',
+'MISSISSIPPI','MISSOURI','MONTANA','NEBRASKA','NEVADA','NEW HAMPSHIRE',
+'NEW JERSEY','NEW MEXICO','NEW YORK','NORTH CAROLINA','NORTH DAKOTA',
+'OHIO','OKLAHOMA','OREGON','PENNSYLVANIA','PUERTO RICO','RHODE ISLAND',
+'SOUTH CAROLINA','SOUTH DAKOTA','TENNESSEE','TEXAS','UTAH','VERMONT',
+'VIRGINIA','WASHINGTON','WEST VIRGINIA','WISCONSIN','WYOMING']
+
+var statesDict = {"AL": "ALABAMA", "AK": "ALASKA", "AS": "AMERICAN SAMOA",
+"AZ": "ARIZONA", "AR": "ARKANSAS", "CA": "CALIFORNIA", "CO": "COLORADO",
+"CT": "CONNECTICUT", "DE": "DELAWARE", "DC": "DISTRICT OF COLUMBIA",
+"FM": "FEDERATED STATES OF MICRONESIA", "FL": "FLORIDA", "GA": "GEORGIA",
+"GU": "GUAM", "HI": "HAWAII", "ID": "IDAHO", "IL": "ILLINOIS", "IN": "INDIANA",
+"IA": "IOWA", "KS": "KANSAS", "KY": "KENTUCKY", "LA": "LOUISIANA", "ME": "MAINE",
+"MH": "MARSHALL ISLANDS", "MD": "MARYLAND", "MA": "MASSACHUSETTS", "MI": "MICHIGAN",
+"MN": "MINNESOTA", "MS": "MISSISSIPPI", "MO": "MISSOURI", "MT": "MONTANA",
+"NE": "NEBRASKA", "NV": "NEVADA", "NH": "NEW HAMPSHIRE", "NJ": "NEW JERSEY",
+"NM": "NEW MEXICO", "NY": "NEW YORK", "NC": "NORTH CAROLINA", "ND": "NORTH DAKOTA",
+"MP": "NORTHERN MARIANA ISLANDS", "OH": "OHIO", "OK": "OKLAHOMA", "OR": "OREGON",
+"PW": "PALAU", "PA": "PENNSYLVANIA", "PR": "PUERTO RICO", "RI": "RHODE ISLAND",
+"SC": "SOUTH CAROLINA", "SD": "SOUTH DAKOTA", "TN": "TENNESSEE", "TX": "TEXAS",
+"UT": "UTAH", "VT": "VERMONT", "VI": "VIRGIN ISLANDS", "VA": "VIRGINIA",
+"WA": "WASHINGTON", "WV": "WEST VIRGINIA", "WI": "WISCONSIN", "WY": "WYOMING" }
+
+setTimeout(function() {
+}, 3000);
+
+//load in data
+/*Store data set of colleges*/
+d3.csv("College Data for JS.csv", parseRowInput).then(load);  //parse and load data
+// load data in
+function parseRowInput(d) {
+  var schoolName = d["School Name"]
+  schoolsArray.push(schoolName.toUpperCase())
+
+  return {
+    school_name: d["School Name"],
+    city: d["City"],
+    state: d["State"],
+    zip: d["Zip"],
+    lat: d["Latitude"],
+    log: d["Longitude"],
+    acceptance_rate: d["Acceptance Rate"],
+    undergrads: d["Undergrads"],
+    public_private: d["Public/Private"],
+    tuition: d["Tuition (In State)"],
+    cost: d["Average Cost of Attendence"],
+    major_category: d["Salary Category"],   // Avg, CS, Humanities...
+    salary: d["Average Early Career Pay"]
+  };
+}
+////////////  schoolsArray.sort((a, b) => a.localeCompare(b))
+
+/*Plot data points*/
+function load(data) {
+  college_data = data;
+  currFilteredData = filterByMajorCategory(college_data, "Average"); //initialize current data to only average points
+  currFilteredData = filterNull(currFilteredData)
+  //plot points on scatterplot
+  scatterplot.selectAll("ellipse")
+  .data(currFilteredData)
+  .enter()
+  .append("ellipse")
+  .attr("rx",	3)
+  .attr("ry", 3)
+  .attr("cx", function(d,i) { return x(d.acceptance_rate)})
+  .attr("cy", function(d) { return y(d.salary)})
+  .on('mouseover', function(d) {  //when you hover over point
+    tooltip.transition()
+    .duration(500)
+    .style("opacity", .9);
+    // tooltip.html("<b>" + d.school_name + "</b><br/> Average Salary: "
+    // + money_formatter.format(d.salary)
+    // + "<br/> Acceptance Rate: " + percentage_formatter(d.acceptance_rate))
+    tooltip.html("<div style = \"font-color:black\"><b>" + d.school_name + "</b><br/> Average Salary: "
+    + money_formatter.format(d.salary)
+    + "<br/> Acceptance Rate: " + percentage_formatter(d.acceptance_rate) + "</div>")
+    .style("left", (d3.event.pageX + 10) + "px")
+    .style("top", (d3.event.pageY) + "px")
+    d3.select(this)
+    .transition()
+    .attr("rx", 8)   //zoom in on point when selected
+    .attr("ry", 8);
+  })
+  .on('mouseout', function() {  //when you leave point
+    tooltip.transition()
+    .duration(500)
+    .style("opacity", 0);
+    d3.select(this)
+    .transition()
+    .duration(500)
+    .attr("rx", 3)
+    .attr("ry", 3)
+  })
+  .style("fill", "salmon");
+  // plot points on scatterplot2
+  scatterplot2.selectAll("ellipse")
+  .data(currFilteredData)
+  .enter()
+  .append("ellipse")
+  .attr("rx",	3)
+  .attr("ry", 3)
+  .attr("cx", function(d,i) { return x3(d.undergrads)})
+  .attr("cy", function(d) { return y(d.salary)})
+  .on('mouseover', function(d) {  //when you hover over point
+    tooltip.transition()
+    .duration(500)
+    .style("opacity", .9);
+    tooltip.html("<b>" + d.school_name + "</b><br/> Average Salary: "
+    + money_formatter.format(d.salary)
+    + "<br/> Undergraduates: " + number_formatter(d.undergrads))
+    .style("left", (d3.event.pageX + 10) + "px")
+    .style("top", (d3.event.pageY) + "px")
+    d3.select(this)
+    .transition()
+    .attr("rx", 8)   //zoom in on point when selected
+    .attr("ry", 8);
+  })
+  .on('mouseout', function() {  //when you leave point
+    tooltip.transition()
+    .duration(500)
+    .style("opacity", 0);
+    d3.select(this)
+    .transition()
+    .duration(500)
+    .attr("rx", 3)
+    .attr("ry", 3)
+  })
+  .style("fill", "lightblue");
+
+  //plot points on scatterplot5
+  scatterplot3.selectAll("ellipse")
+  .data(currFilteredData)
+  .enter()
+  .append("ellipse")
+  .attr("rx", function(d) { return Math.log(d.undergrads) - 3})
+  .attr("ry", function(d) { return Math.log(d.undergrads) - 3})  //size of point based on number of undergrads
+  .attr("cx", function(d,i) { return x5(d.cost)})
+  .attr("cy", function(d) {
+    return y5(d.salary)})
+    .on('mouseover', function(d) {  //when you hover over point
+      tooltip.transition()
+      .duration(500)
+      .style("opacity", .9);
+      tooltip.html("<b>" + d.school_name + "</b><br/> Average Salary: "
+      + money_formatter.format(d.salary)
+      + "<br/> Average Cost: " + money_formatter.format(d.cost)
+      + "<br/> Acceptance Rate: " + percentage_formatter(d.acceptance_rate)
+      + "<br/> Undergraduates: " + number_formatter(d.undergrads))
+      .style("left", (d3.event.pageX + 10) + "px")
+      .style("top", (d3.event.pageY) + "px")
+      d3.select(this)
+      .transition()
+      .attr("rx", 12)   //zoom in on point when selected
+      .attr("ry", 12);
+    })
+    .on('mouseout', function() {  //when you leave point
+      tooltip.transition()
+      .duration(500)
+      .style("opacity", 0);
+      d3.select(this)
+      .transition()
+      .duration(500)
+      .attr("rx", function(d) { return Math.log(d.undergrads) - 3})
+      .attr("ry", function(d) { return Math.log(d.undergrads) - 3})
+    })
+    .style("fill", function(d) {
+      if (d.public_private == "Public") {
+        return "royalblue"
+      } else if (d.public_private == "Private") {
+        return "crimson"
+      }
+    }
+  );
+
+  //plot points on final scatterplot7
+  // ** pass college_data as data if we want to see all points to begin with
+  scatterplot7.selectAll("ellipse")
+  .data(currFilteredData)
+  .enter()
+  .append("ellipse")
+  .attr("rx", function(d) { return Math.log(d.undergrads) - 3})
+  .attr("ry", function(d) { return Math.log(d.undergrads) - 3})  //size of point based on number of undergrads
+  .attr("cx", function(d,i) { return x7(d.cost)})
+  .attr("cy", function(d) {
+    return y7(d.salary)})
+    .on('mouseover', function(d) {  //when you hover over point
+      tooltip.transition()
+      .duration(500)
+      .style("opacity", .9);
+      tooltip.html("<b>" + d.school_name + "</b><br/> Average Salary: "
+      + money_formatter.format(d.salary)
+      + "<br/> Average Cost: " + money_formatter.format(d.cost)
+      + "<br/> Acceptance Rate: " + percentage_formatter(d.acceptance_rate)
+      + "<br/> Undergraduates: " + number_formatter(d.undergrads))
+      .style("left", (d3.event.pageX + 10) + "px")
+      .style("top", (d3.event.pageY) + "px")
+      d3.select(this)
+      .transition()
+      .attr("rx", 12)   //zoom in on point when selected
+      .attr("ry", 12);
+    })
+    .on('mouseout', function() {  //when you leave point
+      tooltip.transition()
+      .duration(500)
+      .style("opacity", 0);
+      d3.select(this)
+      .transition()
+      .duration(500)
+      .attr("rx", function(d) { return Math.log(d.undergrads) - 3})
+      .attr("ry", function(d) { return Math.log(d.undergrads) - 3})
+    })
+    .style("fill", function(d) {
+      if (d.school_name == selectedSchoolName) {
+
+
+        //var rect = d.getBoundingClientRect();
+        ///////////  var bbox = this.getBBox()
+        var bbox = this.getBoundingClientRect();
+        console.log("ONE")
+        //console.log("djkfhsdjkfhkjsdh")
+        //console.log(bbox)
+        tooltip.transition()
+        .duration(500)
+        .style("opacity", .9);
+        tooltip.html("<b>" + d.school_name + "</b><br/> Average Salary: "
+        + money_formatter.format(d.salary)
+        + "<br/> Acceptance Rate: " + percentage_formatter(d.acceptance_rate))
+        .style("left", (bbox.x + 100) + "px")
+        .style("top", 100 + "px") //////////////CHANGE LATER
+        d3.select(this)
+        .dispatch('mouseover')
+        .transition()
+        .attr("rx", 8)   //zoom in on point when selected
+        .attr("ry", 8);
+        // $(d).trigger('mouseovera
+
+        return 	"yellow"
+      } else if (d.major_category == "Average") {
+        return "black"
+      } else if (d.major_category == "CS") {
+        return "steelblue"
+      } else if (d.major_category == "Humanities") {
+        return "darkorange"
+      } else if (d.major_category == "Physical & Life Sciences") {
+        return "green"
+      } else if (d.major_category == "Engineering") {
+        return "orange"
+      } else if (d.major_category == "Business") {
+        return "brown"
+      } else if (d.major_category == "Social Sciences") {
+        return "red"
+      } else if (d.major_category == "Arts") {
+        return "purple"
+      }
+    }
+  );
+}
+
+//Create scatter plot --> referenced http://bl.ocks.org/weiglemc/6185069
+// also referenced http://bl.ocks.org/bunkat/2595950
+// also referenced https://bl.ocks.org/d3noob/23e42c8f67210ac6c678db2cd07a747e
+// Set up size
+var margin = {top: 40, right: 70, bottom: 50, left: 70},
+width = 700 - margin.left - margin.right,
+height = 520 - margin.top - margin.bottom;
+
+// setup x axis scale for scatterplot
+var x = d3.scaleLinear()
+.domain([0, 1])
+.range([0, width]);
+
+// y axis scale
+var y = d3.scaleLinear()
+.domain([30000, 85000])
+.range([height, 0]);
+
+/* Add an SVG element to the DOM*/
+var scatterplot = d3.select('#area1').append('svg')
+.attr('width', width + margin.left + margin.right)
+.attr('height', height + margin.top + margin.bottom)
+.append('g')
+.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+//add tooltip to label points
+var tooltip = d3.select("body").append("div")
+.attr("class", "tooltip")
+.style("opacity", 0);
+
+// add axes
+var xAxis = d3.axisBottom(x);
+var yAxis = d3.axisLeft(y);
+
+scatterplot.append('g')
+.attr('transform', 'translate(0,' + height + ')')
+.call(xAxis);
+
+// add x axis label
+scatterplot.append('text')
+.attr('transform', "translate(" + (width/2) + " ," + (height + 40) + ")")
+.style('text-anchor', 'middle')
+.text("Acceptance Rate")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+scatterplot.append('g')
+.attr('transform', 'translate(0,0)')
+.call(yAxis);
+
+// add y axis label
+scatterplot.append('text')
+.attr('transform', "rotate(-90)")
+.attr("y", 0 - margin.left)
+.attr("x",0 - (height / 2))
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Early Career Salary ($)")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+//add title to scatterplot
+scatterplot.append('text')
+.attr("x", width/2)
+.attr("y", 0 - margin.top/2)
+.style('text-anchor', 'middle')
+.text("Do Prestigious Schools Pay Off?")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "24px")
+.attr("id", "#prestige")
+
+//scatterplot2
+// x axis scale for scatterplot2
+var x3 = d3.scaleLinear()
+.domain([0, 55000])
+.range([0, width]);
+
+var scatterplot2 = d3.select('#area3').append('svg')
+.attr('width', width + margin.left + margin.right)
+.attr('height', height + margin.top + margin.bottom)
+.append('g')
+.attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+// add axes
+var xAxis3 = d3.axisBottom(x3);
+var yAxis = d3.axisLeft(y);
+
+scatterplot2.append('g')
+.attr('transform', 'translate(0,' + height + ')')
+.call(xAxis3);
+
+// add x axis label
+scatterplot2.append('text')
+.attr('transform', "translate(" + (width/2) + " ," + (height + 40) + ")")
+.style('text-anchor', 'middle')
+.text("Number of Undergraduate Students")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+scatterplot2.append('g')
+.attr('transform', 'translate(0,0)')
+.call(yAxis);
+
+// add y axis label
+scatterplot2.append('text')
+.attr('transform', "rotate(-90)")
+.attr("y", 0 - margin.left)
+.attr("x",0 - (height / 2))
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Early Career Salary ($)")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+//add title to scatterplot
+scatterplot2.append('text')
+.attr("x", width/2)
+.attr("y", 0 - margin.top/2)
+.style('text-anchor', 'middle')
+.text("How Does Size Affect Salary?")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "24px")
+
+//create bar chart for public vs. Private
+var school_type_data = [{ "type": "Public", "salary": 50076,},
+{ "type": "Private", "salary": 51639,}];
+
+//set up margin2
+var margin2 = {top: 40, right: 70, bottom: 50, left: 70},
+width = 400 - margin2.left - margin2.right,
+height = 500 - margin2.top - margin2.bottom;
+
+var barchart = d3.select('#area2').append('svg')
+.attr('width', width + margin2.left + margin2.right)
+.attr('height', height + margin2.top + margin2.bottom)
+.append('g')
+.attr('transform', 'translate(' + margin2.left + ',' + margin2.top + ')');
+
+var tooltip2 = d3.select("body").append("div")
+.attr("class", "tooltip2")
+.style("opacity", 0);
+
+//set axes scales
+var x2 = d3.scaleBand()
+.domain(school_type_data.map(function(d) { return d.type; }))
+.range([0, width]);
+
+var y2 = d3.scaleLinear()
+.domain([0, 55000])
+.range([height, 0]);
+
+// create bars (rects)
+barchart.selectAll(".bar")
+.data(school_type_data)
+.enter().append("rect")
+.attr("class", "bar")
+.attr("x", function(d) { return x2(d.type) + 10; })
+.attr("width", x2.bandwidth() - 20)  //add separation between bars
+.attr("y", function(d) { return y2(d.salary); })
+.attr("height", function(d) { return height - y2(d.salary); })
+.on('mousemove', function(d) {  //when you hover over point
+  tooltip2.transition()
+  .duration(100)
+  .style("opacity", .9);
+  tooltip2.html("<b>" + d.type + "</b><br/>"
+  + money_formatter.format(d.salary))
+  .style("left", (d3.event.pageX) + "px")
+  .style("top", (d3.event.pageY) + "px")
+  .style("display", "inline-block")
+})
+.on('mouseout', function() {  //when you leave point
+  tooltip2.style("display", "none");}
+);
+
+var xAxis2 = d3.axisBottom(x2);
+var yAxis2 = d3.axisLeft(y2);
+
+barchart.append('g')
+.attr('transform', 'translate(0,0)')
+.call(yAxis2);
+
+barchart.append("g")
+.attr("class", "x axis")
+.attr("transform", "translate(0," + height + ")")
+.call(xAxis2);
+
+barchart.append("g")
+.attr("class", "y axis")
+.call(yAxis2);
+
+// add x axis label
+barchart.append('text')
+.attr('transform', "translate(" + (width/2) + " ," + (height + 40) + ")")
+.style('text-anchor', 'middle')
+.text("School Type")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+// add y axis label
+barchart.append('text')
+.attr('transform', "rotate(-90)")
+.attr("y", 0 - margin2.left)
+.attr("x",0 - (height / 2))
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Early Career Salary ($)")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+//add title to scatterplot
+barchart.append('text')
+.attr("x", width/2)
+.attr("y", 0 - margin2.top/2)
+.style('text-anchor', 'middle')
+.text("Does It Pay to Go Private?")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "24px")
+
+// add labels bar values
+barchart.append('text')
+.attr("x", width/2 - 70)
+.attr("y", 54 - margin2.top/2)
+.style('text-anchor', 'middle')
+.text("$50,076")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px")
+
+barchart.append('text')
+.attr("x", width/2 + 70)
+.attr("y", 43 - margin2.top/2)
+.style('text-anchor', 'middle')
+.text("$51,639")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px")
+
+//Create scatterplot5 (story 2) cost vs. Salary
+//Create scatter plot --> referenced http://bl.ocks.org/weiglemc/6185069
+// also referenced http://bl.ocks.org/bunkat/2595950
+// also referenced https://bl.ocks.org/d3noob/23e42c8f67210ac6c678db2cd07a747e
+// Set up size
+var margin5 = {top: 80, right: 70, bottom: 50, left: 70},
+width = 1000 - margin5.left - margin5.right,
+height = 700 - margin5.top - margin5.bottom;
+
+// setup x
+var x5 = d3.scaleLinear()
+.domain([0, 70000])
+.range([0, width]);
+
+var y5 = d3.scaleLinear()
+.domain([30000, 85000])
+.range([height, 0]);
+
+/* Add an SVG element to the DOM*/
+var scatterplot3 = d3.select('#area5').append('svg')
+.attr('width', width + margin5.left + margin5.right)
+.attr('height', height + margin5.top + margin5.bottom)
+.append('g')
+.attr('transform', 'translate(' + margin5.left + ',' + margin5.top + ')');
+
+//add tooltip to label points
+var tooltip = d3.select("body").append("div")
+.attr("class", "tooltip")
+.style("opacity", 0);
+
+//add background colors
+scatterplot3.append("rect")
+.attr("width", width/2)
+.attr("height", height*7/11)
+.attr("fill", "#CFCDD0")     //////quadrant color
+.style("opacity", .7);
+
+scatterplot3.append("rect")
+.attr("x", width/2)
+.attr("y", 0)
+.attr("width", width/2)
+.attr("height", height*7/11)
+.attr("fill", "#C0BDC1")    //////quadrant color
+.style("opacity", .9);
+
+scatterplot3.append("rect")
+.attr("x", width/2)
+.attr("y", height*7/11)
+.attr("width", width/2)
+.attr("height", height*4/11)
+.attr("fill", "#E3E1E4")  //////quadrant color
+.style("opacity", 1);
+
+scatterplot3.append("rect")
+.attr("x", 0)
+.attr("y", height*7/11)
+.attr("width", width/2)
+.attr("height", height*4/11)
+.attr("fill", "#D7D7D7") //////quadrant color
+.style("opacity", 1);
+
+// label axis
+scatterplot3.append('text')
+.attr("x", 100)
+.attr("y", 10)
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Low Cost, High Salary")
+.attr("fill", "black")
+.attr("font-family", "Helvetica")
+.attr("font-size", "18px")
+
+scatterplot3.append('text')
+.attr("x", 100)
+.attr("y", height - 30)
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Low Cost, Low Salary")
+.attr("fill", "black")
+.attr("font-family", "Helvetica")
+.attr("font-size", "18px")
+
+scatterplot3.append('text')
+.attr("x", 5/8*width - 30 + 25)
+.attr("y", 10)
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("High Cost, High Salary")
+.attr("fill", "black")
+.attr("font-family", "Helvetica")
+.attr("font-size", "18px")
+
+scatterplot3.append('text')
+.attr("x", 5/8*width - 30 + 25)
+.attr("y", height - 30)
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("High Cost, Low Salary")
+.attr("fill", "black")
+.attr("font-family", "Helvetica")
+.attr("font-size", "18px")
+
+// legend for public/private
+scatterplot3.append('text')
+.attr("x", width - 22)
+.attr("y", height - 30)
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Public")
+.style("fill", "white")
+.attr("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "12px")
+//
+scatterplot3.append('text')
+.attr("x", width - 20)
+.attr("y", height - 15)
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Private")
+.style("fill", "white")
+.attr("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "12px")
+
+scatterplot3.append('circle')
+.attr("cx", width - 47)
+.attr("cy", height - 22)
+.attr("r", "5")
+.attr("fill", "royalblue")
+
+scatterplot3.append('circle')
+.attr("cx", width - 47)
+.attr("cy", height - 7)
+.attr("r", "5")
+.attr("fill", "crimson")
+
+
+//add tooltip to label points
+var tooltip = d3.select("body").append("div")
+.attr("class", "tooltip")
+.style("opacity", 0);
+
+// add x axis
+var xAxis5 = d3.axisBottom(x5); //.tickFormat(function(d){ return d.starting_salary;});;
+
+scatterplot3.append('g')
+.attr('transform', 'translate(0,' + height + ')')
+.call(xAxis5);
+
+// add x axis label
+scatterplot3.append('text')
+.attr('transform', "translate(" + (width/2) + " ," + (height + 40) + ")")
+.style('text-anchor', 'middle')
+.text("Cost of Attendance ($)")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+// add y axis
+var yAxis5 = d3.axisLeft(y5);
+
+scatterplot3.append('g')
+.attr('transform', 'translate(0,0)')
+.call(yAxis5);
+
+// add y axis label
+scatterplot3.append('text')
+.attr('transform', "rotate(-90)")
+.attr("y", 0 - margin5.left)
+.attr("x",0 - (height / 2))
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Early Career Salary ($)")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+//add title to scatterplot3
+scatterplot3.append('text')
+.attr("x", width/2)
+.attr("y", 0 - margin5.top/2)
+.style('text-anchor', 'middle')
+.text("Which Schools Are Worth It?")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "24px")
+
+//add horizontal average salary line
+scatterplot3.append("line")
+.attr("x1", 0)
+.attr("x2", width + 7)
+.attr("y1", height*7/11)
+.attr("y2", height*7/11)
+.style("stroke", "white")
+.style("stroke-dasharray", "5");
+
+//add label for horizontal average line
+scatterplot3.append('text')
+.attr("x", width + 30)
+.attr("y", height*7/11)
+.style('text-anchor', 'middle')
+.text("Average")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px");
+
+scatterplot3.append('text')
+.attr("x", width + 30)
+.attr("y", height*7/11 + 11)
+.style('text-anchor', 'middle')
+.text("Salary")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px");
+
+//add vertical average cost line
+scatterplot3.append("line")
+.attr("x1", width*7/14)
+.attr("x2", width*7/14)
+.attr("y1", -4)
+.attr("y2", height)
+.style("stroke", "white")
+.style("stroke-dasharray", "5");
+
+//add label for horizontal average line
+scatterplot3.append('text')
+.attr("x", width*7/14)
+.attr("y", -16)
+.style('text-anchor', 'middle')
+.text("Average")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px");
+
+scatterplot3.append('text')
+.attr("x", width*7/14)
+.attr("y", -5)
+.style('text-anchor', 'middle')
+.text("Cost")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px");
+
+//create bar chart (story 3) - average salary by major
+var major_data = [{ "major": "Arts", "salary": 43058,},
+{ "major": "Humanities", "salary": 44891,},
+{ "major": "Physical/Life Sciences", "salary": 48920,},
+{ "major": "Social Sciences", "salary": 49354,},
+//{ "major": "Average", "salary": 49578,},
+{ "major": "Business", "salary": 49719,},
+{ "major": "Computer Science", "salary": 62174,},
+{ "major": "Engineering", "salary": 67321,}];
+
+//set up margin
+var margin6 = {top: 40, right: 70, bottom: 50, left: 70},
+width = 800 - margin6.left - margin6.right,
+height = 650 - margin6.top - margin6.bottom;
+
+var barchart2 = d3.select('#area6').append('svg')
+.attr('width', width + margin6.left + margin6.right)
+.attr('height', height + margin6.top + margin6.bottom)
+.append('g')
+.attr('transform', 'translate(' + margin6.left + ',' + margin6.top + ')');
+
+var tooltip2 = d3.select("body").append("div")
+.attr("class", "tooltip2")
+.style("opacity", 0);
+
+//set axes scales
+var x6 = d3.scaleBand()
+.domain(major_data.map(function(d) { return d.major; }))
+.range([0, width]);
+
+var y6 = d3.scaleLinear()
+.domain([0, 70000])
+.range([height, 0]);
+
+// create bars (rects)
+barchart2.selectAll(".bar2")
+.data(major_data)
+.enter().append("rect")
+.attr("class", "bar2")
+.attr("x", function(d) { return x6(d.major) + 5; })
+.attr("width", x6.bandwidth() - 10)  //add separation between bars
+.attr("y", function(d) { return y6(d.salary); })
+.attr("height", function(d) { return height - y6(d.salary); })
+.on('mousemove', function(d) {  //when you hover over point
+  tooltip2.transition()
+  .duration(100)
+  .style("opacity", .9);
+  tooltip2.html("<b>" + d.major + "</b><br/>"
+  + money_formatter.format(d.salary))
+  .style("left", (d3.event.pageX) + "px")
+  .style("top", (d3.event.pageY) + "px")
+  .style("display", "inline-block")
+})
+.on('mouseout', function() {  //when you leave point
+  tooltip2.style("display", "none");}
+);
+
+var xAxis6 = d3.axisBottom(x6);
+var yAxis6 = d3.axisLeft(y6);
+
+barchart2.append('g')
+.attr('transform', 'translate(0,0)')
+.call(yAxis6);
+
+barchart2.append("g")
+.attr("transform", "translate(0," + height + ")")
+.call(xAxis6);
+
+// add x axis label
+barchart2.append('text')
+.attr('transform', "translate(" + (width/2) + " ," + (height + 40) + ")")
+.style('text-anchor', 'middle')
+.text("Major Category")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+// add y axis label
+barchart2.append('text')
+.attr('transform', "rotate(-90)")
+.attr("y", 0 - margin6.left)
+.attr("x", 0 - (height / 2))
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Early Career Salary ($)")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+//add title to scatterplot
+barchart2.append('text')
+.attr("x", width/2)
+.attr("y", 0 - margin6.top/2)
+.style('text-anchor', 'middle')
+.text("Which Majors Pay Off?")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "24px")
+
+// add labels bar values
+barchart2.append('text')
+.attr("x", width/7 - 45)
+.attr("y", height*2/12 + 119)
+.style('text-anchor', 'middle')
+.text("$43,058")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px")
+
+barchart2.append('text')
+.attr("x", width*2/7 - 45)
+.attr("y", height*2/12 + 104)
+.style('text-anchor', 'middle')
+.text("$44,891")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px")
+
+barchart2.append('text')
+.attr("x", width*3/7 - 45)
+.attr("y", height*2/12 + 69)
+.style('text-anchor', 'middle')
+.text("$48,920")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px")
+
+barchart2.append('text')
+.attr("x", width*4/7 - 45)
+.attr("y", height*2/12 + 69)
+.style('text-anchor', 'middle')
+.text("$49,354")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px")
+
+barchart2.append('text')
+.attr("x", width*5/7 - 45)
+.attr("y", height*2/12 + 66)
+.style('text-anchor', 'middle')
+.text("$49,719")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px")
+
+barchart2.append('text')
+.attr("x", width*6/7 - 45)
+.attr("y", height*2/12 - 34)
+.style('text-anchor', 'middle')
+.text("$62,174")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px")
+
+barchart2.append('text')
+.attr("x", width - 45)
+.attr("y", height*2/12 - 74)
+.style('text-anchor', 'middle')
+.text("$67,321")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px");
+
+//add horizontal average line: $49,578
+barchart2.append("line")
+.attr("x1", 0)
+.attr("x2", width + 7)
+.attr("y1", height*4/14 + 4)
+.attr("y2", height*4/14 + 4)
+.style("stroke", "yellow")
+.style("stroke-dasharray", "5");
+
+//add label for horizontal average line
+barchart2.append('text')
+.attr("x", width + 30)
+.attr("y", height*4/14 + 4)
+.style('text-anchor', 'middle')
+.text("Average:")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px");
+
+barchart2.append('text')
+.attr("x", width + 30)
+.attr("y", height*4/14 + 15)
+.style('text-anchor', 'middle')
+.text("$49,578")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px");
+
+//create final scatterplot 7 (story 3)
+var margin7 = {top: 80, right: 70, bottom: 50, left: 70},
+width = 1000 - margin7.left - margin7.right,
+height = 700 - margin7.top - margin7.bottom;
+
+// setup x
+var x7 = d3.scaleLinear()
+.domain([0, 70000])
+.range([0, width]);
+
+var y7 = d3.scaleLinear()
+.domain([30000, 110000])
+.range([height, 0]);
+
+//add scatterplot space
+var scatterplot7 = d3.select('#area7').append('svg')
+.attr('width', width + margin7.left + 50)
+.attr('height', height + margin7.top + margin7.bottom)
+.append('g')
+.attr("align","left")
+.attr('transform', 'translate(' + margin7.left + ',' + margin7.top + ')');
+
+
+//add background colors
+scatterplot7.append("rect")
+.attr("width", width/2)
+.attr("height", height*3/4)
+.attr("fill", "#CFCDD0")
+.style("opacity", .7);
+
+
+scatterplot7.append("rect")
+.attr("x", width/2)
+.attr("y", 0)
+.attr("width", width/2)
+.attr("height", height*3/4)
+.attr("fill", "#C0BDC1")
+.style("opacity", .9);
+//CFCDD0
+scatterplot7.append("rect")
+.attr("x", width/2)
+.attr("y", height*3/4)
+.attr("width", width/2)
+.attr("height", height/4)
+.attr("fill", "#E3E1E4")
+.style("opacity", 1);
+
+scatterplot7.append("rect")
+.attr("x", 0)
+.attr("y", height*3/4)
+.attr("width", width/2)
+.attr("height", height/4)
+.attr("fill", "#D7D7D7")
+.style("opacity", 1);
+
+// label axis
+scatterplot7.append('text')
+.attr("x", 100)
+.attr("y", 10)
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Low Cost, High Salary")
+.attr("fill", "black")
+.attr("font-family", "Helvetica")
+.attr("font-size", "18px")
+
+scatterplot7.append('text')
+.attr("x", 100)
+.attr("y", height - 30)
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Low Cost, Low Salary")
+.attr("fill", "black")
+.attr("font-family", "Helvetica")
+.attr("font-size", "18px")
+
+scatterplot7.append('text')
+.attr("x", 5/8*width - 30 + 25)
+.attr("y", 10)
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("High Cost, High Salary")
+.attr("fill", "black")
+.attr("font-family", "Helvetica")
+.attr("font-size", "18px")
+
+scatterplot7.append('text')
+.attr("x", 5/8*width - 30 + 25)
+.attr("y", height - 30)
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("High Cost, Low Salary")
+.attr("fill", "black")
+.attr("font-family", "Helvetica")
+.attr("font-size", "18px")
+
+//add horizontal average salary line
+scatterplot7.append("line")
+.attr("x1", 0)
+.attr("x2", width + 7)
+.attr("y1", height*6/8)
+.attr("y2", height*6/8)
+.style("stroke", "white")
+.style("stroke-dasharray", "5");
+
+//add label for horizontal average line
+scatterplot7.append('text')
+.attr("x", width + 30)
+.attr("y", height*6/8)
+.style('text-anchor', 'middle')
+.text("Average")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px");
+
+scatterplot7.append('text')
+.attr("x", width + 30)
+.attr("y", height*6/8 + 11)
+.style('text-anchor', 'middle')
+.text("Salary")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px");
+
+//add vertical average cost line
+scatterplot7.append("line")
+.attr("x1", width*7/14)
+.attr("x2", width*7/14)
+.attr("y1", -4)
+.attr("y2", height)
+.style("stroke", "white")
+.style("stroke-dasharray", "5");
+
+//add label for horizontal average line
+scatterplot7.append('text')
+.attr("x", width*7/14)
+.attr("y", -16)
+.style('text-anchor', 'middle')
+.text("Average")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px");
+
+scatterplot7.append('text')
+.attr("x", width*7/14)
+.attr("y", -5)
+.style('text-anchor', 'middle')
+.text("Cost")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "10px");
+
+//add tooltip to label points
+var tooltip = d3.select("body").append("div")
+.attr("class", "tooltip")
+.style("opacity", 0);
+
+// add axes
+var xAxis7 = d3.axisBottom(x7);
+var yAxis7 = d3.axisLeft(y7);
+
+scatterplot7.append('g')
+.attr('transform', 'translate(0,' + height + ')')
+.call(xAxis7);
+
+// add x axis label
+scatterplot7.append('text')
+.attr('transform', "translate(" + (width/2) + " ," + (height + 40) + ")")
+.style('text-anchor', 'middle')
+.text("Cost of Attendance ($)")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+scatterplot7.append('g')
+.attr('transform', 'translate(0,0)')
+.call(yAxis7);
+
+// add y axis label
+scatterplot7.append('text')
+.attr('transform', "rotate(-90)")
+.attr("y", 0 - margin7.left)
+.attr("x",0 - (height / 2))
+.attr("dy", "1em")
+.style('text-anchor', 'middle')
+.text("Early Career Salary ($)")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "16px")
+
+//add title to scatterplot7
+scatterplot7.append('text')
+.attr("x", width/2)
+.attr("y", 0 - margin7.top/2)
+.style('text-anchor', 'middle')
+.text("Comparing Monetary Value of College and Majors")
+.style("fill", "white")
+.attr("font-family", "Helvetica")
+.attr("font-size", "24px")
+
+
+// function that formats numbers as currency in US Dollars
+// function taken from https://flaviocopes.com/how-to-format-number-as-currency-javascript/
+const money_formatter = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+  minimumFractionDigits: 0
+})
+
+var number_formatter = d3.format(",")
+var percentage_formatter = d3.format(",.2%");
+
+///FILTER FUNCTION BELOW
+// starts with full dataset, calls all filters and updates graph
+function callAllFilters(allData, currButton, currType, acceptanceUpperLimit, undergradsUpperLimit) {
+  var filteredData = allData
+  filteredData = filterByMajorCategory(filteredData, currButton)
+  filteredData = filterBySchoolType(filteredData, currType)
+  filteredData = filterByAcceptanceRate(filteredData, acceptanceUpperLimit)
+  filteredData = filterByNumUndergrads(filteredData, undergradsUpperLimit)
+  filteredData = filterByState(filteredData,selectedStates)
+  updateGraph(filteredData)
+}
+
+// filters data by major category, updates scatterplot
+function filterByMajorCategory(data, type) {
+  var filteredData = []
+  for (var i = 0; i < data.length; i++) {
+    var dataPoint = data[i]
+    if (dataPoint.major_category == type) {
+      filteredData.push(dataPoint)
+    }
+  }
+  return filteredData
+}
+
+// filters out null data for acceptance rate column
+function filterNull(data) {
+  var filteredData = []
+  for (var i = 0; i < data.length; i++) {
+    var dataPoint = data[i]
+    if (dataPoint.acceptance_rate != "NULL") {
+      filteredData.push(dataPoint)
+    }
+  }
+  return filteredData
+}
+
+// filters data by major category, updates scatterplot
+function filterBySchoolType(data, type) {
+  var filteredData = []
+  for (var i = 0; i < data.length; i++) {
+    var dataPoint = data[i]
+    if (dataPoint.public_private == type) {
+      filteredData.push(dataPoint)
+    } else if (type == "All") {
+      filteredData.push(dataPoint)
+    }
+  }
+  return filteredData
+}
+
+/* Returns filtered data set with only the points below the acceptance rate limit*/
+function filterByAcceptanceRate(data, upper) {
+  var filteredData = []
+  for (var i = 0; i < data.length; i++) {
+    var dataPoint = data[i]
+    if (dataPoint.acceptance_rate <= upper) {
+      filteredData.push(dataPoint)
+    }
+  }
+  return filteredData
+}
+
+/* Returns filtered data set with only the points below the undergrad limit*/
+function filterByNumUndergrads(data, upper) {
+  var filteredData = []
+  for (var i = 0; i < data.length; i++) {
+    var dataPoint = data[i]
+    if (dataPoint.undergrads <= upper) {
+      filteredData.push(dataPoint)
+    }
+  }
+  return filteredData
+}
+
+function filterByState(data, selectedStates) {
+  if(selectedStates.length == 0) return data;
+  var filteredData = []
+  for (var i = 0; i < data.length; i++) {
+    var dataPoint = data[i]
+    //if( i == 0){
+    //console.log(dataPoint.state)
+    //  //console.log(selectedStates.includes(dataPoint.state))
+    //  }
+    var stateName = statesDict[dataPoint.state]
+    //console.log(stateName)
+    if (selectedStates.includes(stateName)){
+      //console.log(dataPoint.state)
+      filteredData.push(dataPoint)
+    }
+  }
+  return filteredData
+}
+
+/*Keeps track of what button is clicked and calls filter function*/
+let buttons = d3.selectAll("button");
+//console.log(buttons)
+buttons.on("click", function() {
+  let selectedButton = this.dataset.filter; //value of data-filter
+  if (selectedButton == "Computer Science") {
+    currButton = "CS"
+  } else if (selectedButton == "Humanities") {
+    currButton = "Humanities"
+  } else if (selectedButton == "Physical & Life Sciences") {
+    currButton = "Physical & Life Sciences"
+  } else if (selectedButton == "Engineering") {
+    currButton = "Engineering"
+  } else if (selectedButton == "Business") {
+    currButton = "Business"
+  } else if (selectedButton == "Social Sciences") {
+    currButton = "Social Sciences"
+  } else if (selectedButton == "Arts") {
+    currButton = "Arts"
+  } else if (selectedButton == "Average") {
+    currButton = "Average"
+  } else if (selectedButton == "Public") {
+    currType = "Public"
+  } else if (selectedButton == "Private") {
+    currType = "Private"
+  } else if (selectedButton == "All") {
+    currType = "All"
+  }
+  callAllFilters(college_data, currButton, currType, acceptance_rate_upper, undergrads_upper)
+})
+
+
+/*Update points that appear on scatterplot*/
+function updateGraph(filteredData) {
+
+  let circles = scatterplot7.selectAll("ellipse")
+  let updatedCircles = circles.data(filteredData, d => d.id) //
+  .on('mouseover', function(d) {  //when you hover over point
+    tooltip.transition()
+    .duration(500)
+    .style("opacity", .9)
+    //.style("font-color", "black")
+    tooltip.html("<b>" + d.school_name + "</b><br/> Average Salary: "
+    + money_formatter.format(d.salary)
+    + "<br/> Average Cost: " + money_formatter.format(d.cost)
+    + "<br/> Acceptance Rate: " + percentage_formatter(d.acceptance_rate)
+    + "<br/> Undergraduates: " + number_formatter(d.undergrads))
+    .style("left", (d3.event.pageX - 10) + "px")
+    .style("top", (d3.event.pageY - 10) + "px")
+    d3.select(this)
+    .transition()
+    .attr("rx", 12)
+    .attr("ry", 12);
+  })
+  .on('mouseout', function() {  //when you leave point
+    tooltip.transition()
+    .duration(500)
+    .style("opacity", 0);
+    d3.select(this)
+    .transition()
+    .duration(500)
+    .attr("rx", function(d) { return Math.log(d.undergrads) - 3})
+    .attr("ry", function(d) { return Math.log(d.undergrads) - 3})
+  })
+  // .attr("tx", (d3.event.pageX - 10) + "px")
+  // .attr("ty", (d3.event.pageY - 10) + "px")
+  .style("fill", function(d) {
+    //console.log("nameeeeee")
+    //console.log(d.school_name.toUpperCase())
+    //console.log(selectedSchoolName)
+
+    if (d.school_name.toUpperCase() == selectedSchoolName.toUpperCase()) {
+      var bbox = this.getBoundingClientRect();
+      $(d3.select(this)).trigger('mouseover');
+
+      //console.log("djkfhsdjkfhkjsdh")
+      //console.log(bbox)
+      tooltip.transition()
+      .duration(500)
+      .style("opacity", .9);
+      tooltip.html("<b>" + d.school_name + "</b><br/> Average Salary: "
+      + money_formatter.format(d.salary)
+      + "<br/> Acceptance Rate: " + percentage_formatter(d.acceptance_rate))
+      .style("left", (bbox.x + 100) + "px")
+      .style("top", 100 + "px") //////////////CHANGE LATER
+      d3.select(this)
+      .transition()
+      .attr("rx", 8)   //zoom in on point when selected
+      .attr("ry", 8);
+      console.log("TWO")
+      return "yellow"
+    } else if (d.major_category == "Average") {
+      return "black"
+    } else if (d.major_category == "CS") {
+      return "steelblue"
+    } else if (d.major_category == "Humanities") {
+      return "darkorange"
+    } else if (d.major_category == "Physical & Life Sciences") {
+      return "green"
+    } else if (d.major_category == "Engineering") {
+      return "orange"
+    } else if (d.major_category == "Business") {
+      return "brown"
+    } else if (d.major_category == "Social Sciences") {
+      return "red"
+    } else if (d.major_category == "Arts") {
+      return "purple"
+    }
+  });
+  let enterSelection = updatedCircles.enter();
+  let newCircles = enterSelection.append("ellipse")
+  .attr("rx", function(d) { return Math.log(d.undergrads) - 3})
+  .attr("ry", function(d) { return Math.log(d.undergrads) - 3})
+  .attr("cx",	function(d)	{	return x7(d.cost);	})
+  .attr("cy",	function(d)	{	return y7(d.salary);	})
+  .on('mouseover', function(d) {  //when you hover over point
+    tooltip.transition()
+    .duration(500)
+    .style("opacity", .9);
+    tooltip.html("<b>" + d.school_name + "</b><br/> Average Salary: "
+    + money_formatter.format(d.salary)
+    + "<br/> Average Cost: " + money_formatter.format(d.cost)
+    + "<br/> Acceptance Rate: " + percentage_formatter(d.acceptance_rate)
+    + "<br/> Undergraduates: " + number_formatter(d.undergrads))
+    .style("left", (d3.event.pageX + 10) + "px")
+    .style("top", (d3.event.pageY) + "px")
+    d3.select(this)
+    .transition()
+    .attr("rx", 12)
+    .attr("ry", 12);
+  })
+  .on('mouseout', function() {  //when you leave point
+    tooltip.transition()
+    .duration(500)
+    .style("opacity", 0);
+    d3.select(this)
+    .transition()
+    .duration(500)
+    .attr("rx", function(d) { return Math.log(d.undergrads) - 3})
+    .attr("ry", function(d) { return Math.log(d.undergrads) - 3})
+  })
+  .style("fill", function(d) {
+    if (d.school_name.toUpperCase() == selectedSchoolName.toUpperCase()) {
+      $(d3.select(this)).trigger('mouseover');
+      var bbox = this.getBoundingClientRect();
+      console.log("djkfhsdjkfhkjsdh")
+      console.log(bbox)
+      lastD = d
+
+      d3.select(this)
+      .transition()
+      .duration(50)
+      .attr("rx", 15)   //zoom in on point when selected
+      .attr("ry", 15);
+      console.log(this)
+      $(d3.select(this)).trigger('mouseover');
+
+
+      // window.setTimeout(function() {
+      //        // This will execute 5 seconds later
+      //        var label = d3.select(this)
+      //        if (label != null) {
+      //            label.style.display = 'none';
+      //        }
+      //    }, 5000);
+      //
+
+      tooltip.transition()
+      .duration(1000)
+      .style("opacity", .9);
+      tooltip.html("<b>" + d.school_name + "</b><br/> Average Salary: "
+      + money_formatter.format(d.salary)
+      + "<br/> Acceptance Rate: " + percentage_formatter(d.acceptance_rate))
+      .style("left", (bbox.x + 100) + "px")
+      .style("top", bbox.y + "px") //////////////CHANGE LATER
+
+
+      console.log("THREE")
+      lastX = bbox.x
+      lastY = bbox.y
+      return "yellow"
+    }else if (d.major_category == "Average") {
+      return "black"
+    } else if (d.major_category == "CS") {
+      return "steelblue"
+    } else if (d.major_category == "Humanities") {
+      return "darkorange"
+    } else if (d.major_category == "Physical & Life Sciences") {
+      return "green"
+    } else if (d.major_category == "Engineering") {
+      return "orange"
+    } else if (d.major_category == "Business") {
+      return "brown"
+    } else if (d.major_category == "Social Sciences") {
+      return "red"
+    } else if (d.major_category == "Arts") {
+      return "purple"
+    }
+  });
+  let unselectedCircles = updatedCircles.exit();
+  updatedCircles.exit().remove();
+}
+</script>
+
+
+<script src="https://d3js.org/d3.v4.js"></script>
+<script src="https://unpkg.com/d3-simple-slider"></script>
+
+
+<script>
+
+/*Slider for acceptance rate, show only schools with acceptance rate below number specified*/
+var acceptance_rate_slider = d3.sliderHorizontal()
+.min(0)
+.max(1)
+.step(0.05)
+.tickFormat(d3.format('.0%'))
+.width(300)
+.displayValue(false)
+.default(1)   //slider starts at tick 1
+.on('onchange', val => {
+  acceptance_rate_upper = val
+  callAllFilters(college_data, currButton, currType, acceptance_rate_upper, undergrads_upper)
+});
+
+d3.select("#acceptance").append("svg")
+.attr("width", 400)
+.attr("height", 100)
+.attr("name", "acceptance_rate_slidername")
+.append("g")
+.attr("transform", "translate(50,30)")
+.call(acceptance_rate_slider);
+
+/*Slider for number of undergrads, show only schools with number of undergrads below number specified*/
+var undergrads_slider = d3.sliderHorizontal()
+.min(0)
+.max(55000)   //adjust max
+.step(500)
+.width(300)
+.tickFormat(d3.format(',.2s'))
+.displayValue(false)
+.default(55000)   //slider starts at tick 55000
+.on('onchange', val => {
+  undergrads_upper = val  //keep track of number of undergrads specified
+  callAllFilters(college_data, currButton, currType, acceptance_rate_upper, undergrads_upper)
+});
+
+d3.select("#undergrads").append("svg")
+.attr("width", 400)
+.attr("height", 100)
+.attr("name", "undergrads_slidername")
+.append("g")
+.attr("transform", "translate(50,30)")
+.call(undergrads_slider);
+
+function changeSelectedSchool(){
+  //console.log("CHANGING")
+  name = document.getElementById('searchInputSchools').value
+  selectedSchoolName = name;
+
+  callAllFilters(college_data, currButton, currType, acceptance_rate_upper, undergrads_upper)
+  callTooltip(lastX,lastY, lastD)
+
+}
+
+function callTooltip(x, y, d){
+  console.log("clalling tooltip")
+  mouseover(d);
+  tooltip.transition()
+  .duration(500)
+  .style("opacity", .9);
+  // tooltip.html("<b>" + d.school_name + "</b><br/> Average Salary: "
+  // + money_formatter.format(d.salary)
+  // + "<br/> Acceptance Rate: " + percentage_formatter(d.acceptance_rate))
+  tooltip.html("<div style = \"font-color:black\"><b>" + d.school_name + "</b><br/> Average Salary: "
+  + money_formatter.format(d.salary)
+  + "<br/> Acceptance Rate: " + percentage_formatter(d.acceptance_rate) + "</div>")
+  .style("left", (x+ 10) + "px")
+  .style("top", y + "px")
+
+
+
+}
+
+function addStates(){
+  //console.log("Adding STATES")
+  state = document.getElementById('searchInputStates').value
+  selectedStates.push(state)
+  //console.log(selectedStates)
+}
+
+function changeStates(){
+  //console.log("CHANGING STATES")
+  callAllFilters(college_data, currButton, currType, acceptance_rate_upper, undergrads_upper)
+
+}
+
+/*
+* Referenced: https://www.competa.com/blog/make-an-autocomplete-search-box/
+*/
+function clearStatesFilter(){
+  selectedStates = []
+  var inputStates = document.getElementById('searchInputStates');
+  inputStates.value = ""
+  var autocompleteStates = document.getElementById('autocompleteStates');
+  autocompleteStates.innerHTML = '';
+  callAllFilters(college_data, currButton, currType, acceptance_rate_upper, undergrads_upper)
+}
+
+function clearSchoolHighlight(){
+  var inputSchools = document.getElementById('searchInputSchools');
+  inputSchools.value = ""
+  var autocompleteSchools = document.getElementById('autocompleteSchools');
+  selectedSchoolName = ""
+  autocompleteSchools.innerHTML = '';
+  callAllFilters(college_data, currButton, currType, acceptance_rate_upper, undergrads_upper)
+}
+
+$(document).ready(function(){
+
+
+  var searchBarSchools = document.getElementById('searchBarSchools');
+  var inputSchools = document.getElementById('searchInputSchools');
+  var totalResultsSchools = document.getElementById('resultsSchools');
+  var autocompleteSchools = document.getElementById('autocompleteSchools');
+  var source_to_show;
+  var results;
+
+  var searchBarStates = document.getElementById('searchBarStates');
+  var inputStates = document.getElementById('searchInputStates');
+  var totalResultsStates = document.getElementById('resultsStates');
+  var autocompleteStates = document.getElementById('autocompleteStates');
+  var source_to_show2;
+  var results2;
+
+  var autocomplete= function(val) {
+    var source_return = [];
+    for (var j=0; j<val.length; j++) {
+      if (val[j] !== "") {
+        for (var i = 0; i < schoolsArray.length; i++) {
+          if(i ==0){
+            //console.log(schoolsArray[0])
+            //console.log(val[j]) //gives us a character
+            //console.log(schoolsArray[0].indexOf(val[j]))
+            //console.log(source_return.indexOf(schoolsArray[i]))
+
+          }
+          if (schoolsArray[i].indexOf(val[j]) === 0 && source_return.indexOf(schoolsArray[i]) === -1) {
+
+            source_return.push(schoolsArray[i]);
+          }
+        }
+      }
+    }
+    return source_return;
+  };
+
+
+  inputSchools.onkeyup = function(e) {
+    input_val = inputSchools.value.toUpperCase();
+    inputSchools.style.fontStyle = 'normal';
+    input_val.slice();
+
+    if (inputSchools.value === '') {
+      inputSchools.style.fontStyle = 'oblique';
+      autocompleteSchools.innerHTML = '';
+    }
+
+    if (input_val.length > 0) {
+      source_to_show = [];
+      autocompleteSchools.innerHTML = '';
+      source_to_show = autocomplete(input_val.split(" "));
+
+      //console.log(source_to_show.length)
+      //console.log(source_to_show)
+      for (i = 0; i < source_to_show.length; i++) {
+        autocompleteSchools.innerHTML += '<li><a>' + source_to_show[i] + '</a></li>';
+      }
+
+      $('#resultsSchools').css('display', 'block');
+      $('#resultsSchools li a').click(function(){
+        inputSchools.value = this.text;
+      });
+
+
+    } else {
+      source_to_show = [];
+      source_to_show_pages = [];
+      autocompleteSchools.innerHTML = '';
+    }
+
+  };
+
+  inputStates.onkeyup = function(e) {
+    inputStates_val = inputStates.value.toUpperCase();
+    inputStates.style.fontStyle = 'normal';
+    inputStates_val.slice();
+
+    if (inputStates.value === '') {
+      inputStates.style.fontStyle = 'oblique';
+      autocompleteStates.innerHTML = '';
+    }
+
+    if (inputStates_val.length > 0) {
+      source_to_show = [];
+      autocompleteStates.innerHTML = '';
+      source_to_show = autocomplete2(inputStates_val.split(" "));
+
+      //console.log(source_to_show.length)
+      //console.log(source_to_show)
+
+      for (i = 0; i < source_to_show.length; i++) {
+        autocompleteStates.innerHTML += '<li><a>' + source_to_show[i] + '</a></li>';
+
+      }
+
+      $('#resultsStates').css('display', 'block');
+      $('#resultsStates li a').click(function(){
+        inputStates.value = this.text;
+      });
+
+
+    } else {
+      source_to_show = [];
+      source_to_show_pages = [];
+      autocompleteStates.innerHTML = '';
+    }
+
+  };
+
+
+  var autocomplete2= function(val) {
+    var source_return = [];
+    for (var j=0; j<val.length; j++) {
+      if (val[j] !== "") {
+        for (var i = 0; i < allStates.length; i++) {
+
+          if (allStates[i].indexOf(val[j]) === 0 && source_return.indexOf(allStates[i]) === -1) {
+            source_return.push(allStates[i]);
+          }
+        }
+      }
+    }
+    return source_return;
+  };
+
+})
+</script>
+
+</html>

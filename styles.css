@@ -1,0 +1,139 @@
+
+h1{
+  font-size: 40px;
+  font-family: Helvetica, sans-serif;
+  margin-bottom: 5px;
+}
+h2{
+  font-size: 30px;
+  font-family: Helvetica, sans-serif;
+  margin-bottom: 5px;
+}
+h3{
+  font-size: 20px;
+  font-family: Helvetica, sans-serif;
+  font-style: italic;
+  margin-top: 5px;
+  margin-right:250px;
+  margin-left: 250px;
+}
+h4{
+  font-size: 16px;
+  font-family: Helvetica, sans-serif;
+  font-style: italic;
+  margin-top: 5px;
+  margin-right:350px;
+  margin-left: 350px;
+}
+h5{
+  font-size: 24px;
+  font-family: Helvetica;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+h5{
+  font-size: 24px;
+  font-family: Helvetica;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+p, label{
+  text-align: left;
+  font-weight: bold;
+  font-size: 16px;
+  font-family: Arial;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+body{
+  text-align: center;
+}
+
+button {
+  padding:10px 30px;
+  border-radius:10px;
+  border:none;
+  font-weight: bold;
+  margin: 5px;
+  color: black;
+}
+button#computerscience {
+  background-color: steelblue
+}
+button#humanities {
+  background-color: darkorange
+}
+button#physicallifesciences {
+  background-color: green
+}
+button#engineering {
+  background-color: orange
+}
+button#business {
+  background-color: brown
+}
+button#socialsciences {
+  background-color: red
+}
+button#arts {
+  background-color: purple
+}
+button#Average {
+  background-color: gray
+}
+button#public {
+  background-color: lightgray
+}
+button#private {
+  background-color: lightgray
+}
+button#all {
+  background-color: lightgray
+}
+#type{
+  font-size: 20px;
+  font-family: Helvetica, sans-serif;
+}
+#box{
+  border-style: : solid;
+  border-color: black;
+  border-radius: 1
+}
+/* #acceptance_rate_slider {
+width: 800px;
+height: 80px;
+}  */
+.tooltip {
+  position: absolute;
+  width: auto;
+  height: auto;
+  padding: 5px;
+  border-radius: 10px;
+  pointer-events: none;
+  background-color: darkblue;
+  font-size: 12px;
+  font-family: Helvetica, sans-serif;
+  text-align: center;
+}
+
+.bar {
+  fill: green;
+}
+
+.bar:hover {
+  fill: yellowgreen;
+}
+
+.bar2 {
+  fill: lightcoral;
+}
+
+.bar2:hover {
+  fill: orangered;
+}
+
+/*
+#box2{
+  float:right;
+  margin-right: 0px
+} */
